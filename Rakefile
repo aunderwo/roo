@@ -13,7 +13,9 @@ begin
     gem.description        = "roo can access the contents of OpenOffice-, Excel- or Google-Spreadsheets"
     gem.authors            = ['Anthony Underwood','Hugh McGowan','Thomas Preymesser']
     gem.files              =  FileList[ "{lib,test}/**/*"]
-
+    gem.has_rdoc = true
+    gem.extra_rdoc_files = ["README.markdown", "History.txt"]
+    gem.rdoc_options = ["--main","README.markdown"]
     gem.add_dependency "spreadsheet", [">= 0.6.4"]
     gem.add_dependency "rubyzip", [">= 0.9.1"]
     gem.add_dependency "hpricot", [">= 0.6"]
