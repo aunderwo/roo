@@ -5,14 +5,13 @@ require 'rake/testtask'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name               = 'roo'
-    s.rubyforge_project  = 'roo'
+    s.name               = 'aunderwo-roo'
     s.platform           = Gem::Platform::RUBY
-    s.email              = 'hugh_mcgowan@yahoo.com' 
-    s.homepage           = "http://roo.rubyforge.org"
-    s.summary            = "roo"
+    s.email              = 'email2ants@gmail.com' 
+    s.homepage           = "http://github.com/aunderwo/roo"
+    s.summary            = "based on roo"
     s.description        = "roo can access the contents of OpenOffice-, Excel- or Google-Spreadsheets"
-    s.authors            = ['Hugh McGowan','Thomas Preymesser']
+    s.authors            = ['Anthony Underwood','Hugh McGowan','Thomas Preymesser']
     s.files              =  FileList[ "{lib,test}/**/*"]
     s.has_rdoc = true
     s.extra_rdoc_files = ["README.markdown", "History.txt"]
