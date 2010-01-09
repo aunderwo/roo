@@ -22,6 +22,7 @@ begin
     s.add_dependency "GData", [">= 0.0.4"]
     s.add_dependency "libxml-ruby", [">= 1.1.3"]
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
