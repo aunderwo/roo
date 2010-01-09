@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{aunderwo-roo}
-  s.version = "1.3.11"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anthony Underwood", "Hugh McGowan", "Thomas Preymesser"]
@@ -13,8 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{roo can access the contents of OpenOffice-, Excel- or Google-Spreadsheets}
   s.email = %q{email2ants@gmail.com}
   s.extra_rdoc_files = [
-    "History.txt",
-     "README.markdown"
+    "README.markdown"
   ]
   s.files = [
     "lib/roo.rb",
@@ -110,7 +109,7 @@ Gem::Specification.new do |s|
      "test/whitespace.xml"
   ]
   s.homepage = %q{http://github.com/aunderwo/roo}
-  s.rdoc_options = ["--main", "README.markdown"]
+  s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{based on roo}
