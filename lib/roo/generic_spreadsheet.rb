@@ -312,7 +312,7 @@ class GenericSpreadsheet
   # this is only needed if you work with zipped files or files via the web
   def remove_tmp
     if File.exists?(@tmpdir)
-      FileUtils::rm_r(@tmpdir)
+      FileUtils::rm_r(@tmpdir) if @tmpdir
     end
   end
 

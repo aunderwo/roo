@@ -25,7 +25,7 @@ class Excel2003XML < GenericSpreadsheet
       end
       @doc = XML::Parser.file(@filename).parse
     ensure
-      FileUtils::rm_r(@tmpdir)
+      FileUtils::rm_r(@tmpdir) if @tmpdir
     end
     @default_sheet = self.sheets.first
     @cell = Hash.new

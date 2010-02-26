@@ -126,7 +126,7 @@ class Excel < GenericSpreadsheet
       @default_sheet = self.sheets.first
     ensure
       #if ENV["roo_local"] != "thomas-p"
-      FileUtils::rm_r(@tmpdir)
+      FileUtils::rm_r(@tmpdir) if @tmpdir
       #end
     end
     @cell = Hash.new
