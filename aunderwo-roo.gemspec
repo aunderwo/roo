@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{aunderwo-roo}
-  s.version = "1.0.0"
+  s.version = "1.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anthony Underwood", "Hugh McGowan", "Thomas Preymesser"]
-  s.date = %q{2010-01-09}
+  s.date = %q{2010-02-26}
   s.description = %q{roo can access the contents of OpenOffice-, Excel- or Google-Spreadsheets}
   s.email = %q{email2ants@gmail.com}
   s.extra_rdoc_files = [
@@ -115,11 +115,11 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{based on roo}
   s.test_files = [
-    "test/test_roo.rb",
+    "test/test_helper.rb",
+     "test/test_roo.rb",
      "test/skipped_tests.rb",
-     "test/test_helper.rb",
-     "examples/roo_soap_server.rb",
      "examples/roo_soap_client.rb",
+     "examples/roo_soap_server.rb",
      "examples/write_me.rb"
   ]
 

@@ -11,6 +11,14 @@ class GenericSpreadsheet
 
   def initialize
   end
+  
+  def initialise_tmp
+    @tmpdir = "oo_"+$$.to_s
+    @tmpdir = File.join(ENV['ROO_TMP'], @tmpdir) if ENV['ROO_TMP'] 
+    unless File.exists?(@tmpdir)
+      FileUtils::mkdir(@tmpdir)
+    end
+  end
 
   # set the working sheet in the document
   def default_sheet=(sheet)
@@ -425,41 +433,9 @@ class GenericSpreadsheet
     return row,col
   end
 
-  #  def open_from_uri(uri)
-  #    require 'open-uri' ;
-  #    tempfilename = File.join(@tmpdir, File.basename(uri))
-  #    f = File.open(tempfilename,"wb")
-  #    begin
-  #      open(uri) do |net|
-  #        f.write(net.read)
-  #      end
-  #    rescue
-  #      raise "could not open #{uri}"
-  #    end
-  #    f.close
-  #    File.join(@tmpdir, File.basename(uri))
-  #  end
-
-  #  OpenURI::HTTPError
-  #  def open_from_uri(uri)
-  #    require 'open-uri'
-  #    #existiert URL?
-  #    r = Net::HTTP.get_response(URI.parse(uri))
-  #    raise "URL nicht verfuegbar" unless r.is_a? Net::HTTPOK
-  #    tempfilename = File.join(@tmpdir, File.basename(uri))
-  #    f = File.open(tempfilename,"wb")
-  #    open(uri) do |net|
-  #      f.write(net.read)
-  #    end
-  #    #   rescue
-  #    #    raise "could not open #{uri}"
-  #    # end
-  #    f.close
-  #    File.join(@tmpdir, File.basename(uri))
-  #  end
-  
   def open_from_uri(uri)
     require 'open-uri'
+    initialise_tmp
     response = ''
     begin
       open(uri, "User-Agent" => "Ruby/#{RUBY_VERSION}") { |net| 
@@ -476,6 +452,7 @@ class GenericSpreadsheet
   end
   
   def open_from_stream(stream)
+    initialise_tmp
     tempfilename = File.join(@tmpdir, "spreadsheet")
     f = File.open(tempfilename,"wb")
     f.write(stream[7..-1])
@@ -533,10 +510,7 @@ class GenericSpreadsheet
     ret=nil
     if zip.file.file? path
       # extract and return filename
-      @tmpdir = "oo_"+$$.to_s
-      unless File.exists?(@tmpdir)
-        FileUtils::mkdir(@tmpdir)
-      end
+      initialise_tmp
       file = File.open(File.join(@tmpdir, path),"wb")
       file.write(zip.read(path))
       file.close

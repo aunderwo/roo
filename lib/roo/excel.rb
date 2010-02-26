@@ -112,11 +112,7 @@ class Excel < GenericSpreadsheet
   def initialize(filename, packed = nil, file_warning = :error)
     super()
     @file_warning = file_warning
-    @tmpdir = "oo_"+$$.to_s
-    @tmpdir = File.join(ENV['ROO_TMP'], @tmpdir) if ENV['ROO_TMP'] 
-    unless File.exists?(@tmpdir)
-      FileUtils::mkdir(@tmpdir)
-    end
+
     filename = open_from_uri(filename) if filename[0,7] == "http://"
     filename = open_from_stream(filename[7..-1]) if filename[0,7] == "stream:"
     filename = unzip(filename) if packed and packed == :zip
