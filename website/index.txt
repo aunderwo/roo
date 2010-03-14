@@ -251,7 +251,7 @@ Replace Openoffice with
 </code>
 </pre>
 
-or Google.new() or Excelx.new().
+or GoogleDoc.new() or Excelx.new().
 
 All methode are the same for OpenOffice-, Excel- and Google-objects.
 <strike> The only difference

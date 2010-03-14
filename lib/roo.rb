@@ -12,7 +12,7 @@ module Roo
         when '.xml'
           Excel2003XML.new(file)
         when ''
-          Google.new(file)
+          GoogleDoc.new(file)
         else
           raise ArgumentError, "Don't know how to open file #{file}"
         end      

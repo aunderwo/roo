@@ -203,8 +203,8 @@ class TestRoo < Test::Unit::TestCase
       assert_kind_of Excel, oo
     end
     if GOOGLE
-      oo = Google.new(key_of("numbers1"))
-      assert_kind_of Google, oo
+      oo = GoogleDoc.new(key_of("numbers1"))
+      assert_kind_of GoogleDoc, oo
     end
     if EXCELX
       oo = Excelx.new(File.join(TESTDIR,"numbers1.xlsx"))
@@ -366,7 +366,7 @@ class TestRoo < Test::Unit::TestCase
       else  
         assert_raise(RangeError) { dummy = oo.formula?('C',5,"non existing sheet name")}
         assert_raise(RangeError) { dummy = oo.formula('C',5,"non existing sheet name")}
-        assert_raise(RangeError) { dummy = oo.set('C',5,42,"non existing sheet name")} unless oo.class == Google
+        assert_raise(RangeError) { dummy = oo.set('C',5,42,"non existing sheet name")} unless oo.class == GoogleDoc
         assert_raise(RangeError) { dummy = oo.formulas("non existing sheet name")} 
       end
       assert_raise(RangeError) { dummy = oo.to_yaml({},1,1,1,1,"non existing sheet name")}
@@ -1052,7 +1052,7 @@ class TestRoo < Test::Unit::TestCase
   def test_simple_spreadsheet_find_by_condition
     with_each_spreadsheet(:name=>'simple_spreadsheet') do |oo|
       oo.header_line = 3
-      oo.date_format = '%m/%d/%Y' if oo.class == Google
+      oo.date_format = '%m/%d/%Y' if oo.class == GoogleDoc
       erg = oo.find(:all, :conditions => {'Comment' => 'Task 1'})
       assert_equal Date.new(2007,05,07), erg[1]['Date']
       assert_equal 10.75       , erg[1]['Start time']
@@ -1119,7 +1119,7 @@ class TestRoo < Test::Unit::TestCase
       ".xlsx"
     when Excel2003XML
       ".xml"
-    when Google  
+    when GoogleDoc
       ""
     end
   end
@@ -1156,7 +1156,7 @@ class TestRoo < Test::Unit::TestCase
     with_each_spreadsheet(:name=>'numbers1') do |oo|
       ext = get_extension(oo)
       expected = sprintf(expected_templ,ext)
-      if oo.class == Google      
+      if oo.class == GoogleDoc
         assert_equal expected.gsub(/numbers1/,key_of("numbers1")), oo.info
       else
         assert_equal expected, oo.info
@@ -1368,7 +1368,7 @@ Sheet 3:
   def test_no_remaining_tmp_files_google
     if GOOGLE
       assert_raise(GoogleReadError) {
-        oo = Google.new(key_of("no_spreadsheet_file.txt"))
+        oo = GoogleDoc.new(key_of("no_spreadsheet_file.txt"))
       }
       a=Dir.glob("oo_*")
       assert_equal [], a
